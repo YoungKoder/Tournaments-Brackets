@@ -1,0 +1,9 @@
+.MuiAccordionSummary-root.Mui-expanded {
+  color: #524aac;
+  border-bottom: 1px solid #524aac;
+  /* padding: 0; */
+}
+.MuiAccordionSummary-root .MuiAccordionSummary-content {
+  margin: 0;
+  /* padding: 0; */
+}
