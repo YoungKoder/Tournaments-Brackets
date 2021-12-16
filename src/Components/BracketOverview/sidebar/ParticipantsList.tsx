@@ -8,27 +8,51 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { ParticipantI } from "../../Brackets/bracketsStore";
 import { useParticipantsListStyle } from "./styles/useParticipantsListStyles";
+import { ParticipantI } from "../../Brackets/tournamentTypes";
+import { TournamentEntityStore } from "../../Brackets/tournamentStore";
 
 export interface ParticipantsListProps {
   participantsList: Array<ParticipantI>;
-  addParticipant: () => void;
-  deleteParticipant: (participantId: string) => () => void;
-  editParticipant: (participantId: string, value: string) => void;
+  addParticipant?: (props: {
+    name?: string;
+    position?: number;
+  }) => Generator<
+    | Promise<Response>
+    | Generator<Promise<Response>, void, TournamentEntityStore>,
+    void,
+    unknown
+  >;
+  deleteParticipant?: (
+    data: ParticipantI
+  ) => Generator<
+    Promise<Response> | Generator<Promise<Response>, any, unknown>,
+    any,
+    unknown
+  >;
+  editParticipant?: (
+    data: ParticipantI
+  ) => Generator<
+    | Promise<Response>
+    | Generator<Promise<Response>, void, TournamentEntityStore>,
+    void,
+    unknown
+  >;
+  handleEditingParticipant?: (uid: number, value: string) => void | undefined;
 }
 
 export const ParticipantsList: React.FC<ParticipantsListProps> = ({
   participantsList,
-  addParticipant,
-  deleteParticipant,
-  editParticipant,
+  addParticipant = () => {},
+  deleteParticipant = () => {},
+  editParticipant = () => {},
+  handleEditingParticipant = () => {},
 }) => {
   const classes = useParticipantsListStyle();
   const handleChange =
-    (participantId: string) =>
+    (participantId: number) =>
     (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-      editParticipant(participantId, event.target.value);
+      handleEditingParticipant(participantId, event.target.value);
     };
 
   return (
@@ -36,7 +60,7 @@ export const ParticipantsList: React.FC<ParticipantsListProps> = ({
       <Box className={classes.headerRow}>
         <Typography>List</Typography>
         <IconButton
-          onClick={addParticipant}
+          onClick={() => addParticipant({})}
           className={classes.addParticipantButton}
           size="small"
         >
@@ -47,9 +71,9 @@ export const ParticipantsList: React.FC<ParticipantsListProps> = ({
         {participantsList.map((item) => (
           <TextField
             className={classes.root}
-            key={item.participantId}
+            key={item.uid}
             value={item.name}
-            onChange={handleChange(item.participantId)}
+            onChange={handleChange(item.uid)}
             variant="outlined"
             size="small"
             margin="dense"
@@ -59,7 +83,7 @@ export const ParticipantsList: React.FC<ParticipantsListProps> = ({
                 <InputAdornment position="end">
                   <IconButton
                     className={classes.deleteParticipantButton}
-                    onClick={deleteParticipant(item.participantId)}
+                    onClick={() => deleteParticipant(item)}
                   >
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </IconButton>

@@ -17,7 +17,6 @@
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",
-    "i": "^0.3.7",
     "mobx": "^6.3.5",
     "mobx-react": "^7.2.1",
     "nanoid": "^3.1.30",

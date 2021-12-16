@@ -1,4 +1,4 @@
-import { ParticipantI } from "../Components/Brackets/bracketsStore";
+import { ParticipantI } from "../Components/Brackets/tournamentStore";
 
 export const fairSeeding = (players: Array<ParticipantI>) => {
   if (!players.length) return [];

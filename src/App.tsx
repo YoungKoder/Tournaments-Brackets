@@ -2,9 +2,6 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import {SpacingOptions} fr
-import { BracketsProvider } from "./Components/Brackets/bracketsContext";
 import Routes from "./routes";
 import "./style.css";
 import { BreadcrumbsProvider } from "./Components/Breadcrumbs/breadcrumbsContext";
@@ -56,11 +53,9 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <BracketsProvider>
-          <BreadcrumbsProvider>
-            <Routes />
-          </BreadcrumbsProvider>
-        </BracketsProvider>
+        <BreadcrumbsProvider>
+          <Routes />
+        </BreadcrumbsProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

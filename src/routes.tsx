@@ -1,20 +1,20 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { useBracketsStore } from "./Components/Brackets/bracketsContext";
+import { tournamentsStore } from "./Components/Brackets/tournamentStore";
 import { useBreadcrumbsStore } from "./Components/Breadcrumbs/breadcrumbsContext";
 import { BracketOverviewPage } from "./Routes/BracketOverviewPage";
 import { Home } from "./Routes/Home";
 
 const Routes: React.FC = () => {
   const breadCrumbsStore = useBreadcrumbsStore();
-  const bracketsStore = useBracketsStore();
+  const bracketsStore = tournamentsStore;
   return (
     <Switch>
       <Route
         path="/"
         exact
         render={(props) => {
-          bracketsStore.setBracketUnActive();
+          bracketsStore.setTournamentUnActive();
           breadCrumbsStore && breadCrumbsStore.setBreadCrumbs(["Brackets"]);
           return <Home />;
         }}
@@ -23,8 +23,8 @@ const Routes: React.FC = () => {
         path="/:bracketId"
         exact
         render={(props) => {
-          bracketsStore.setBracketUnActive();
-          bracketsStore.setBracketActive(props.match.params.bracketId);
+          bracketsStore.setTournamentUnActive();
+          bracketsStore.setTournamentActive(props.match.params.bracketId);
           return (
             <BracketOverviewPage bracketId={props.match.params.bracketId} />
           );

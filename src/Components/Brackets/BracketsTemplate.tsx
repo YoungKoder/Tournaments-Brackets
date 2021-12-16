@@ -2,11 +2,11 @@ import { Box, Card, CardActionArea, Typography } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router";
 import { BracketItemCard } from "./BracketItemCard";
-import { BracketI } from "./bracketsStore";
+import { TournamentEntityStore } from "./tournamentStore";
 import { useBracketsTemplateStyles } from "./styles/useBracketsTemplateStyles";
 
 interface BracketsTemplateI {
-  brackets: Array<BracketI>;
+  brackets: Array<TournamentEntityStore>;
   addBracket: (name: string) => void;
 }
 
@@ -17,7 +17,7 @@ export const BracketsTemplate: React.FC<BracketsTemplateI> = ({
   const classes = useBracketsTemplateStyles();
   const history = useHistory();
 
-  const handleClickItemCard = (bracketId: string) => () => {
+  const handleClickItemCard = (bracketId: number) => () => {
     history.push(`/${bracketId}`);
   };
 
@@ -25,10 +25,10 @@ export const BracketsTemplate: React.FC<BracketsTemplateI> = ({
     <Box className={classes.root}>
       {brackets.map((i) => (
         <BracketItemCard
-          key={i.id}
+          key={i.tid}
           imgSource="https://pbs.twimg.com/media/FAoFi9fUcAAmIvd.jpg"
-          name={i.name}
-          onClick={handleClickItemCard(i.id)}
+          name={i.title!}
+          onClick={handleClickItemCard(i.tid!)}
         />
       ))}
       <Card
