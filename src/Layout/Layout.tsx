@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Header } from "./Header";
 import { SideBar } from "./SideBar";
 import { useLayoutStyles } from "./styles/useLayoutStyles";
+import { Modal } from "../Components/UiElements/Modal/Modal";
 
 export const Layout: React.FC<BoxProps> = ({
   children,
@@ -24,6 +25,7 @@ export const Layout: React.FC<BoxProps> = ({
           {children}
         </Box>
       </Box>
+      <Modal />
     </Box>
   );
 };

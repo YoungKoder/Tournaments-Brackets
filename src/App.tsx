@@ -2,29 +2,42 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import {SpacingOptions} fr
 import { BracketsProvider } from "./Components/Brackets/bracketsContext";
 import Routes from "./routes";
 import "./style.css";
 import { BreadcrumbsProvider } from "./Components/Breadcrumbs/breadcrumbsContext";
 import { SpacingOptions } from "@material-ui/core/styles/createSpacing";
+import { ModalProvider } from "./Components/UiElements/Modal/modalContext";
 
 const defaultTheme = createTheme();
 
 export const theme = createTheme({
   palette: {
+    //deep purple
     primary: {
       main: "#19227c",
       light: "#524aac",
       dark: "#00004f",
       contrastText: "#ffffff",
     },
+    //grey
     secondary: {
       main: "#424242",
       light: "#6d6d6d",
       dark: "#1b1b1b",
       contrastText: "#ffffff",
+    },
+    //pink
+    warning: {
+      main: "#d81b60",
+      light: "#ff5c8d",
+      dark: "#a00037",
+    },
+    //blue
+    info: {
+      main: "#42a5f5",
+      light: "#80d6ff",
+      dark: "#0077c2",
     },
   },
   spacing: (factor: SpacingOptions) => `${factor}rem`,
@@ -56,11 +69,13 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <BracketsProvider>
-          <BreadcrumbsProvider>
-            <Routes />
-          </BreadcrumbsProvider>
-        </BracketsProvider>
+        <ModalProvider>
+          <BracketsProvider>
+            <BreadcrumbsProvider>
+              <Routes />
+            </BreadcrumbsProvider>
+          </BracketsProvider>
+        </ModalProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

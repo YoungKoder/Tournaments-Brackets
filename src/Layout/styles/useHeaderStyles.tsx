@@ -4,6 +4,7 @@ export const useHeaderStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(0.75),
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
     boxShadow: "0px 4px 8px 1px rgba(34, 60, 80, 0.42)",
   },
   appTitle: {
