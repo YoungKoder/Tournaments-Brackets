@@ -1,4 +1,4 @@
-import { useLocalStore } from "mobx-react-lite";
+import { useLocalObservable } from "mobx-react-lite";
 import React from "react";
 import { BracketsStoreI, createBracketsStore } from "./bracketsStore";
 
@@ -7,7 +7,7 @@ const BracketsContext = React.createContext<BracketsStoreI>(
 );
 
 export const BracketsProvider: React.FC = ({ children }) => {
-  const bracketsStore = useLocalStore(createBracketsStore);
+  const bracketsStore = useLocalObservable(createBracketsStore);
   return (
     <BracketsContext.Provider value={bracketsStore}>
       {children}

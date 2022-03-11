@@ -10,11 +10,7 @@ export const Header: React.FC = observer(() => {
   const classes = useHeaderStyles();
   const breadCrumbsStore = useBreadcrumbsStore();
   const modalContext = useModalStore();
-  modalContext.children = () => (
-    <Box>
-      <Typography>Test</Typography>
-    </Box>
-  );
+
   return (
     <AppBar position="sticky" className={classes.root}>
       <Box>

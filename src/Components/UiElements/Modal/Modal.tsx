@@ -4,7 +4,6 @@ import { useModalStore } from "./modalContext";
 
 export const Modal: React.FC = observer(() => {
   const modalStore = useModalStore();
-
   return (
     <Dialog open={modalStore.isOpen} onClose={modalStore.handleCloseModal}>
       {modalStore.children}

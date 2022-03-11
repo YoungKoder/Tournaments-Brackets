@@ -1,10 +1,10 @@
 import { createModalContext } from "./modalStore";
 import React from "react";
-import { useLocalStore } from "mobx-react";
+import { useLocalObservable } from "mobx-react";
 const ModalContext = React.createContext(createModalContext());
 
 export const ModalProvider: React.FC = ({ children }) => {
-  const bracketsStore = useLocalStore(createModalContext);
+  const bracketsStore = useLocalObservable(createModalContext);
   return (
     <ModalContext.Provider value={bracketsStore}>
       {children}

@@ -1,4 +1,4 @@
-import { Button, withStyles, darken, fade } from "@material-ui/core";
+import { Button, withStyles, darken, alpha } from "@material-ui/core";
 
 export const SimpleButton = withStyles((theme) => ({
   root: {
@@ -19,20 +19,20 @@ export const SimpleButton = withStyles((theme) => ({
     },
   },
   outlined: {
-    backgroundColor: fade(theme.palette.warning.main, 0),
+    backgroundColor: alpha(theme.palette.warning.main, 0),
     color: theme.palette.warning.main,
     border: `1px solid ${theme.palette.warning.main}`,
     "&:hover": {
       border: `1px solid ${theme.palette.warning.main}`,
-      backgroundColor: fade(theme.palette.warning.main, 0.15),
+      backgroundColor: alpha(theme.palette.warning.main, 0.15),
     },
     "&:active": {
       border: `1px solid ${theme.palette.warning.main}`,
-      backgroundColor: fade(theme.palette.warning.main, 0.25),
+      backgroundColor: alpha(theme.palette.warning.main, 0.25),
     },
     "&:focus": {
       border: `1px solid ${theme.palette.warning.main}`,
-      backgroundColor: fade(theme.palette.warning.main, 0.25),
+      backgroundColor: alpha(theme.palette.warning.main, 0.25),
     },
   },
   containedSecondary: {
@@ -50,20 +50,20 @@ export const SimpleButton = withStyles((theme) => ({
     },
   },
   outlinedSecondary: {
-    backgroundColor: fade(theme.palette.info.light, 0),
+    backgroundColor: alpha(theme.palette.info.light, 0),
     color: theme.palette.info.light,
     border: `1px solid ${theme.palette.info.light}`,
     "&:hover": {
       border: `1px solid ${theme.palette.info.light}`,
-      backgroundColor: fade(theme.palette.info.light, 0.15),
+      backgroundColor: alpha(theme.palette.info.light, 0.15),
     },
     "&:active": {
       border: `1px solid ${theme.palette.info.light}`,
-      backgroundColor: fade(theme.palette.info.light, 0.25),
+      backgroundColor: alpha(theme.palette.info.light, 0.25),
     },
     "&:focus": {
       border: `1px solid ${theme.palette.info.light}`,
-      backgroundColor: fade(theme.palette.info.light, 0.25),
+      backgroundColor: alpha(theme.palette.info.light, 0.25),
     },
   },
 }))(Button);

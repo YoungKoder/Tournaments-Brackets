@@ -1,4 +1,4 @@
-import { useLocalStore } from "mobx-react-lite";
+import { useLocalObservable } from "mobx-react-lite";
 import React from "react";
 import { createBreadcrumbsStore } from "./breadcrumbsStore";
 
@@ -8,7 +8,7 @@ const BreadcrumbsContext = React.createContext<null | {
 }>(null);
 
 export const BreadcrumbsProvider: React.FC = ({ children }) => {
-  const bracketsStore = useLocalStore(createBreadcrumbsStore);
+  const bracketsStore = useLocalObservable(createBreadcrumbsStore);
   return (
     <BreadcrumbsContext.Provider value={bracketsStore}>
       {children}
