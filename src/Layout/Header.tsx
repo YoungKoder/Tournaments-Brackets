@@ -3,13 +3,12 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useBreadcrumbsStore } from "../Components/Breadcrumbs/breadcrumbsContext";
-import { SimpleButton } from "../Components/UiElements/Buttons/TBButton";
-import { useModalStore } from "../Components/UiElements/Modal/modalContext";
+import { UserArea } from "../features/User/components/UserArea";
 import { useHeaderStyles } from "./styles/useHeaderStyles";
+
 export const Header: React.FC = observer(() => {
   const classes = useHeaderStyles();
   const breadCrumbsStore = useBreadcrumbsStore();
-  const modalContext = useModalStore();
 
   return (
     <AppBar position="sticky" className={classes.root}>
@@ -26,12 +25,7 @@ export const Header: React.FC = observer(() => {
             ))}
         </Box>
       </Box>
-      <SimpleButton
-        variant="contained"
-        onClick={() => modalContext.switchModal(true)}
-      >
-        Register
-      </SimpleButton>
+      <UserArea />
     </AppBar>
   );
 });

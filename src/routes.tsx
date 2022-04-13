@@ -4,10 +4,19 @@ import { useBracketsStore } from "./Components/Brackets/bracketsContext";
 import { useBreadcrumbsStore } from "./Components/Breadcrumbs/breadcrumbsContext";
 import { BracketOverviewPage } from "./Routes/BracketOverviewPage";
 import { Home } from "./Routes/Home";
+import { AppDispatch } from "./store";
+import { checkIsAuthAsync } from "./features/User/userSlice";
+import { useDispatch } from "react-redux";
 
 const Routes: React.FC = () => {
   const breadCrumbsStore = useBreadcrumbsStore();
   const bracketsStore = useBracketsStore();
+  const dispatch = useDispatch<AppDispatch>();
+
+  React.useEffect(() => {
+    dispatch(checkIsAuthAsync());
+  }, []);
+
   return (
     <Switch>
       <Route

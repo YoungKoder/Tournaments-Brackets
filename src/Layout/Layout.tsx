@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Header } from "./Header";
 import { SideBar } from "./SideBar";
 import { useLayoutStyles } from "./styles/useLayoutStyles";
-import { Modal } from "../Components/UiElements/Modal/Modal";
+import { Modal } from "../features/Modal/modal";
 
 export const Layout: React.FC<BoxProps> = ({
   children,

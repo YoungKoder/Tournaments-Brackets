@@ -67,7 +67,7 @@ export function createBracketsStore(): BracketsStoreI {
     },
     getParticipants(bracketId: string) {
       const index = this.brackets.findIndex((item) => item.id === bracketId);
-      return this.brackets[index].participants;
+      return [];
     },
     addNewParticipant(bracketId: string) {
       const index = this.brackets.findIndex((item) => item.id === bracketId);
