@@ -3,8 +3,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { useAccordion } from "./CustomBracketSettingAccordion";
-import { ParticipantsList } from "./ParticipantsList";
-import { useBracketsStore } from "../../Brackets/bracketsContext";
 import { useBracketSettingsSidebarStyles } from "./styles/useBracketSettingsSidebarStyles";
 import { observer } from "mobx-react";
 
@@ -32,14 +30,7 @@ export const BracketSettingsSidebar: React.FC<BracketSettingsSidebarProps> =
             </Typography>
           </CustomAccordionSummary>
           <CustomAccordionDetails>
-            <Paper className={classes.detailsContentWrapper}>
-              {/* <ParticipantsList
-                participantsList={bracketsStore.getParticipants(bracketId)}
-                addParticipant={bracketsStore.addNewParticipant(bracketId)}
-                deleteParticipant={bracketsStore.deleteParticipant(bracketId)}
-                editParticipant={bracketsStore.editParticipant(bracketId)}
-              /> */}
-            </Paper>
+            <Paper className={classes.detailsContentWrapper}></Paper>
           </CustomAccordionDetails>
         </CustomAccordion>
         <CustomAccordion>
@@ -53,14 +44,7 @@ export const BracketSettingsSidebar: React.FC<BracketSettingsSidebarProps> =
             </Typography>
           </CustomAccordionSummary>
           <CustomAccordionDetails>
-            <Paper className={classes.detailsContentWrapper}>
-              {/* <ParticipantsList
-              participantsList={bracketsStore.getParticipants(bracketId)}
-              addParticipant={bracketsStore.addNewParticipant(bracketId)}
-              deleteParticipant={bracketsStore.deleteParticipant(bracketId)}
-              editParticipant={bracketsStore.editParticipant(bracketId)}
-            /> */}
-            </Paper>
+            <Paper className={classes.detailsContentWrapper}></Paper>
           </CustomAccordionDetails>
         </CustomAccordion>
       </Box>

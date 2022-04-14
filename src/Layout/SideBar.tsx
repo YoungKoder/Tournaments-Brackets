@@ -1,46 +1,43 @@
 import { Avatar, Box, Button, Typography } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faGamepad } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { useSidebarStyles } from "./styles/useSidebarStyles";
-import { useBracketsStore } from "../Components/Brackets/bracketsContext";
 import { observer } from "mobx-react-lite";
 import clsx from "clsx";
-import { stringAvatar } from "../Utility/parseStringAvatar";
 
-export const SideBar: React.FC = observer(() => {
+interface NavButtons {
+  play: boolean;
+}
+export const SideBar: React.FC = () => {
   const classes = useSidebarStyles();
   const history = useHistory();
-  const bracketsStore = useBracketsStore();
+  const location = useLocation();
 
   return (
     <Box className={classes.root}>
-      <Button size="small" onClick={() => history.push("/")}>
-        <Typography className={classes.navItem}>
-          <FontAwesomeIcon icon={faHome} />
-        </Typography>
-      </Button>
+      <Box>
+        <Button size="small" onClick={() => history.push("/")}>
+          <Typography className={classes.navItem}>
+            <FontAwesomeIcon icon={faHome} />
+          </Typography>
+        </Button>
+      </Box>
+
       <Typography className={classes.navItem}>...</Typography>
-      {bracketsStore.brackets.map((i) => (
-        <Box
-          className={clsx({
-            [classes.avatarAreaDefault]: !i.active,
-            [classes.avatarAreaActive]: i.active,
-          })}
-          key={i.id}
-        >
-          <Button onClick={() => history.push(`/${i.id}`)}>
-            <Avatar
-              className={clsx(classes.bracketAvatarCircle, {
-                [classes.avatarCircleDefault]: !i.active,
-                [classes.avatarCircleActive]: i.active,
-              })}
-              {...stringAvatar(i.name)}
-            />
-          </Button>
-        </Box>
-      ))}
+      <Box
+        className={clsx({
+          [classes.avatarAreaDefault]: location.pathname === "/play",
+          [classes.avatarAreaActive]: location.pathname === "/play",
+        })}
+      >
+        <Button onClick={() => history.push("/play")}>
+          <Typography className={classes.navItem}>
+            <FontAwesomeIcon icon={faGamepad} />
+          </Typography>
+        </Button>
+      </Box>
     </Box>
   );
-});
+};

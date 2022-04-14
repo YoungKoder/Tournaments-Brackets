@@ -1,6 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import React from "react";
-import { Brackets } from "../Components/Brackets/Brackets";
 import { Layout } from "../Layout/Layout";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -11,9 +10,5 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 export const Home: React.FC = () => {
   const classes = useStyles();
-  return (
-    <Layout className={classes.root}>
-      <Brackets />
-    </Layout>
-  );
+  return <Layout className={classes.root}></Layout>;
 };
